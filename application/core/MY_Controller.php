@@ -1,29 +1,21 @@
 <?php
-
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
-
-/* load the MX_Router class */
-require APPPATH . "third_party/MX/Controller.php";
-
 class MY_Controller extends MX_Controller
 {	
-
-	function __construct() 
-	{
+	protected $data;
+	public function __construct() {
 		parent::__construct();
-		$this->_hmvc_fixes();
-	}
-	
-	function _hmvc_fixes()
-	{		
-		//fix callback form_validation		
-		//https://bitbucket.org/wiredesignz/codeigniter-modular-extensions-hmvc
-		$this->load->library('form_validation');
-		$this->form_validation->CI =& $this;
-	}
 
+		// Inicializa variável com dados
+		$this->data['cabecalho'] = '';
+		$this->data['menu'] = '';
+		$this->data['interna'] = '';
+		$this->data['rodape'] = '';
+
+        // Model padrão
+        $model = $this->router->class . '_model';
+        $this->load->model($model, 'model');
+
+        // Módulo padrão a ser carregado
+        $this->data['carregar']['modulo'] = $this->router->class;	
+	}
 }
-
-/* End of file MY_Controller.php */
-/* Location: ./application/core/MY_Controller.php */
