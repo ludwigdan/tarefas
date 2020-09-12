@@ -39,25 +39,25 @@
                         <div class="tab-content" id="animate-tab-content">
                             <div role="tabpanel" class="tab-pane show active" id="singin" aria-labelledby="singin-tab">
                                 <h3>Entrar no Sistema</h3>
-                                <form>
+                                <form method="post" action="<?php echo base_url('login/autenticar');?>">
                                     <div class="group material-input">
-        							    <input type="text" required>
+        							    <input type="text" required name="login" value="<?php if ($this->session->flashdata('login')) { echo $this->session->flashdata('login'); } ?>">
         							    <span class="highlight"></span>
         							    <span class="bar"></span>
         							    <label>Usuário</label>
                                     </div>
                                     <div class="group material-input">
-        							    <input type="password" required>
+        							    <input type="password" required name="senha">
         							    <span class="highlight"></span>
         							    <span class="bar"></span>
         							    <label>Senha</label>
                                     </div>
+                                    <div class="sign-btn text-center">
+                                        <button type="submit" class="btn btn-primary mr-1 mb-2">
+                                            Entrar
+                                        </button>
+                                    </div>
                                 </form>
-                                <div class="sign-btn text-center">
-                                    <a href="db-default.html" class="btn btn-primary mr-1 mb-2">
-                                        Entrar
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </div>                    
@@ -68,5 +68,9 @@
         <script src="assets/vendors/js/base/core.min.js"></script>
         <script src="assets/vendors/js/app/app.min.js"></script>
         <script src="assets/js/components/tabs/animated-tabs.min.js"></script>
+        <script src="<?php echo base_url('assets/js/components/sweetalert2/sweetalert2.js');?>"></script>
+        <?php if ($this->session->flashdata('mensagem_swal')) { $swal = $this->session->flashdata('mensagem_swal'); ?>
+            <script type="text/javascript">Swal.fire ({  title: "<?php echo $swal['titulo'];?>" , html: "<?php echo $swal['mensagem'];?>" , type: "<?php echo $swal['tipo'];?>", confirmButtonClass: 'btn azul-principal' })</script>
+        <?php } ?>
     </body>
 </html>

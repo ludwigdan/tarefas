@@ -5,6 +5,16 @@ class MY_Controller extends MX_Controller
 	public function __construct() {
 		parent::__construct();
 
+		if($this->router->fetch_class() != 'login') {
+			if (!isset($this->session->userdata['tarefas'])){
+				redirect(base_url('login'));
+			}
+		} else if($this->router->fetch_class() == 'login' && $this->router->fetch_method() != 'sair') {
+			if (isset($this->session->userdata['tarefas'])){
+				redirect(base_url(''));
+			}			
+		}
+
 		// Inicializa variável com dados
 		$this->data['cabecalho'] = '';
 		$this->data['menu'] = '';

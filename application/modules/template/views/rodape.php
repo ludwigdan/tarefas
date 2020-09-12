@@ -21,3 +21,14 @@
             </div>
             <!-- End Page Content -->
         </div>
+
+
+        <script src="<?php echo base_url('assets/js/components/sweetalert2/sweetalert2.js');?>"></script>
+        <?php if ($this->session->flashdata('mensagem_swal')) { $swal = $this->session->flashdata('mensagem_swal'); ?>
+            <script type="text/javascript">Swal.fire ({  title: "<?php echo $swal['titulo'];?>" , html: "<?php echo $swal['mensagem'];?>" , type: "<?php echo $swal['tipo'];?>", confirmButtonClass: 'btn azul-principal' })</script>
+        <?php } ?>
+
+    </body>
+
+    
+</html>
