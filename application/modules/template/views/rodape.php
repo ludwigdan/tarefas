@@ -28,6 +28,10 @@
             <script type="text/javascript">Swal.fire ({  title: "<?php echo $swal['titulo'];?>" , html: "<?php echo $swal['mensagem'];?>" , type: "<?php echo $swal['tipo'];?>", confirmButtonClass: 'btn azul-principal' })</script>
         <?php } ?>
 
+        <?php if (isset($js)) { foreach($js as $j) { ?>
+            <script src="<?php echo $j;?>" type="text/javascript"></script>
+        <?php } } ?>
+
     </body>
 
     

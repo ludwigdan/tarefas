@@ -6,7 +6,7 @@
                     <div class="navbar-holder d-flex align-items-center align-middle justify-content-between">
                         <!-- Begin Logo -->
                         <div class="navbar-header">
-                            <a href="<?php echo base_url('inicial'); ?>" class="navbar-brand">
+                            <a href="<?php echo base_url('minhas_tarefas')?>" class="navbar-brand">
                                 <div class="brand-image brand-big">
                                     TAREFAS
                                 </div>
@@ -50,7 +50,7 @@
                             </ul>
                             <li><a href="#dropdown-cadastro" aria-expanded="false" data-toggle="collapse"><i class="la la-edit"></i><span>Cadastros</span></a>
                             <ul id="dropdown-cadastro" class="collapse list-unstyled pt-0">
-                                <li><a href="#">Grupos</a></li>
+                                <li><a href="<?php echo base_url('grupos')?>">Grupos</a></li>
                                 <li><a href="#">Funcionários</a></li>
                                 <li><a href="#">Setores</a></li>
                             </ul>

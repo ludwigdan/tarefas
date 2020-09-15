@@ -9,6 +9,7 @@
 */
 
 /* jshint expr: true */
+$(document).ready(function(){
 
 (function (factory) {
   if (typeof define === 'function' && define.amd) {
@@ -3718,3 +3719,5 @@
   }
 
 }));
+
+});

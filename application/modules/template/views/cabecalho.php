@@ -27,6 +27,14 @@
         <script src="assets/vendors/js/owl-carousel/owl.carousel.min.js"></script>
         <script src="assets/vendors/js/app/app.js"></script>
         <script src="assets/js/app/calendar/basic-calendar.min.js"></script>
+        <script src="assets/vendors/js/datatables/datatables.js"></script>
+        <script src="assets/vendors/js/datatables/dataTables.buttons.js"></script>
+        <script src="assets/vendors/js/datatables/jszip.min.js"></script>
+        <script src="assets/vendors/js/datatables/buttons.html5.js"></script>
+        <script src="assets/vendors/js/datatables/buttons.colVis.js"></script>
+        <script src="assets/vendors/js/datatables/buttons.print.js"></script>
+        <script src="assets/js/components/tables/tables.js"></script>
+        <script src="assets/js/functions.js"></script>
 
         <script>
             base_url = "<?php echo base_url(); ?>";

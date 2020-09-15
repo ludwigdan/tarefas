@@ -49,3 +49,7 @@
 .default-sidebar>.side-navbar ul ul a:hover, .default-sidebar>.side-navbar ul a:hover i{
     color: #5d5386;
 }
+
+.btn-novo{
+    float: right!important;
+}
