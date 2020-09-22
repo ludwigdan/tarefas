@@ -20,15 +20,13 @@
                         <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center pull-right cor-verde">
               
                             <li class="nav-item dropdown"><a id="user" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
-                                <div class="icone-perfil ">D</div>
+                                <div class="icone-perfil "><?php echo substr($this->session->userdata['tarefas']['nm_funcionario'], 0, 1); ?></div>
                                 <ul aria-labelledby="user" class="user-size dropdown-menu">
                                     <li>
-                                        <a href="<?php echo base_url('inicial/alterar_senha')?>" class="dropdown-item"> 
-                                            Meus Dados
+                                        <a class="dropdown-item" style="text-align: center; font-size: 1.2em;"> 
+                                            <?php echo $this->session->userdata['tarefas']['nm_funcionario']; ?>
                                         </a>
                                     </li>
-
-                                    <li class="separator"></li>
                                     <li><a rel="nofollow" href="<?php echo base_url('login/sair')?>" class="dropdown-item logout text-center"><i class="ti-power-off"></i></a></li>
                                 </ul>
                             </li>
@@ -51,8 +49,8 @@
                             <li><a href="#dropdown-cadastro" aria-expanded="false" data-toggle="collapse"><i class="la la-edit"></i><span>Cadastros</span></a>
                             <ul id="dropdown-cadastro" class="collapse list-unstyled pt-0">
                                 <li><a href="<?php echo base_url('grupos')?>">Grupos</a></li>
-                                <li><a href="#">Funcionários</a></li>
-                                <li><a href="#">Setores</a></li>
+                                <li><a href="<?php echo base_url('funcionarios')?>">Funcionários</a></li>
+                                <li><a href="<?php echo base_url('setores')?>">Setores</a></li>
                             </ul>
             			</ul>
             		</nav>

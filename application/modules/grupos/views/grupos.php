@@ -36,8 +36,8 @@
                 </div>
 
 
-<div id="modal-grupo" class="modal modal-top fade">
-    <div class="modal-dialog">
+<div id="modal-grupo" class="modal fade">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Grupo</h4>
@@ -52,7 +52,7 @@
                     <div class="form-group row d-flex align-items-center ">
                         <div class="col-md-12 m--margin-bottom-20">
                             <label class="form-control-label">Descrição</label>
-                            <input type="text" class="form-control" name="ds_grupo" maxlength="30">
+                            <input type="text" class="form-control" name="ds_grupo" maxlength="30" required>
                         </div>
                     </div>
                 </div>

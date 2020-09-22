@@ -1,7 +1,14 @@
+$(document).ready(function(){
+    mascaras();
+    datepicker();
+    selectpicker()
+});
+
 $(document).on('click', '.btn-cancelar', function(){
 	idForm = $(this).closest('form').attr('id');
 	resetar_form(idForm);
 });
+
 
 function resetar_form(form){
     // form => id do formulário
@@ -12,6 +19,12 @@ function resetar_form(form){
     $("#"+form+" input[type=checkbox]").each(function() { 
         $(this).prop('checked',false); 
     });
+
+    $('.selectpicker').select2("destroy");
+    $.each($('.selectpicker option'), function(){
+        $(this).removeAttr('selected');
+    });
+    $('.selectpicker').select2();
 
     // para casos específicos, criar funções a parte
     switch(form){
@@ -39,7 +52,43 @@ function popular_form(form, dados){
     
     // para casos específicos, criar funções a parte
     switch(form){
+        case 'form-funcionario':
+            popular_form_funcionario(dados)
+            break;
         default:
         	break;
     }
+}
+
+function popular_form_funcionario(dados){
+    $('.selectpicker').select2("destroy");
+    dados.grupos.forEach(function(grupo){
+        $('select[name="grupos[]"] option[value="'+grupo.id_grupo+'"]').attr("selected", true); 
+    });
+    $('.selectpicker').select2();
+}
+
+function mascaras(){
+    //cpf
+    $('.mascara-cpf').inputmask('999.999.999-99',{ showMaskOnHover: false });
+
+    $('.datepicker').inputmask('99/99/9999',{ showMaskOnHover: false });
+}
+
+function datepicker(){
+    $('.datepicker').daterangepicker({
+        singleDatePicker: true,
+        locale: {
+            format: 'DD/MM/YYYY',
+            applyLabel: 'OK',
+            cancelLabel: 'Cancelar',
+            daysOfWeek: ['Do', 'Se', 'Te', 'Qu', 'Qu', 'Se', 'Sa'],
+            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        },
+    });
+    $('.datepicker').val('');
+}
+
+function selectpicker(){
+    $('.selectpicker').select2();
 }

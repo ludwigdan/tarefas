@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    carregar_dados('tabela-grupos');
+    montar_tabela('tabela-grupos');
 });
 
 function editGrupo(idGrupo){

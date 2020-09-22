@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS grupo (
   id_grupo SERIAL,
   dt_criacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   dt_atualizacao TIMESTAMP NULL,
-  ds_grupo VARCHAR(30) NULL,
+  ds_grupo VARCHAR(30) NOT NULL,
   PRIMARY KEY (id_grupo)
 );
 
@@ -34,17 +34,17 @@ CREATE TABLE IF NOT EXISTS funcionario_grupo (
   dt_atualizacao TIMESTAMP NULL,
   id_funcionario INT NULL,
   id_grupo INT NULL,
-  PRIMARY KEY (id_funcionario),
+  PRIMARY KEY (id_funcionario_grupo),
   CONSTRAINT fk_funcionario_grupo_func
     FOREIGN KEY (id_funcionario)
     REFERENCES funcionario (id_funcionario)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT fk_funcionario_grupo_gp
     FOREIGN KEY (id_grupo)
     REFERENCES grupo (id_grupo)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 );
 
 -- -----------------------------------------------------

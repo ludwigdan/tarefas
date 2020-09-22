@@ -15,6 +15,7 @@ class Login extends MY_Controller {
 		
 		if($login !== false){
 	        $sessao = array('tarefas' => $login);
+	        unset($sessao['senha']);
 	        $this->session->set_userdata($sessao);
 			redirect(base_url(''));
 		} else {

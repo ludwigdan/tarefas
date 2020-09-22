@@ -1,5 +1,4 @@
-function carregar_dados(nmTabela){
-    nmTabela = 'tabela-grupos';
+function montar_tabela(nmTabela){
     var table = $("table[name='"+nmTabela+"']").DataTable({
         responsive: true,
         "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "Todos"]],
