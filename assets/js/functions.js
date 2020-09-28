@@ -28,6 +28,11 @@ function resetar_form(form){
 
     // para casos específicos, criar funções a parte
     switch(form){
+        case 'form-setor':
+            $('.tipo-tarefa-header').remove();
+            $('.tipoTarefaCollapse').remove();
+
+            break;
         default:
         	break;
     }
@@ -55,6 +60,9 @@ function popular_form(form, dados){
         case 'form-funcionario':
             popular_form_funcionario(dados)
             break;
+        case 'form-setor':
+            popular_form_setor(dados)
+            break;
         default:
         	break;
     }
@@ -64,6 +72,14 @@ function popular_form_funcionario(dados){
     $('.selectpicker').select2("destroy");
     dados.grupos.forEach(function(grupo){
         $('select[name="grupos[]"] option[value="'+grupo.id_grupo+'"]').attr("selected", true); 
+    });
+    $('.selectpicker').select2();
+}
+
+function popular_form_setor(dados){
+    $('.selectpicker').select2("destroy");
+    dados.tipos_tarefas.forEach(function(tipo_tarefa){
+        addTipoTarefa(tipo_tarefa.id_tipo_tarefa);
     });
     $('.selectpicker').select2();
 }

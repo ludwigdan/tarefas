@@ -1,8 +1,4 @@
-/*!
-  * Bootstrap v4.1.3 (https://getbootstrap.com/)
-  * Copyright 2011-2018 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
-  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-  */
+
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('jquery')) :
   typeof define === 'function' && define.amd ? define(['exports', 'jquery'], factory) :
@@ -1242,7 +1238,6 @@
 
             if (selector !== null) {
               var $elem = $$$1([].slice.call(document.querySelectorAll(selector)));
-
               if (!$elem.hasClass(ClassName.SHOW)) {
                 $$$1(trigger).addClass(ClassName.COLLAPSED).attr('aria-expanded', false);
               }
@@ -1389,7 +1384,6 @@
         var $target = $$$1(this);
         var data = $target.data(DATA_KEY);
         var config = data ? 'toggle' : $trigger.data();
-
         Collapse._jQueryInterface.call($target, config);
       });
     });
@@ -4290,6 +4284,7 @@
           }
 
           toggles[i].setAttribute('aria-expanded', 'false');
+
           $$$1(dropdownMenu).removeClass(ClassName.SHOW);
           $$$1(parent).removeClass(ClassName.SHOW).trigger($$$1.Event(Event.HIDDEN, relatedTarget));
         }
@@ -6458,4 +6453,3 @@
   Object.defineProperty(exports, '__esModule', { value: true });
 
 })));
-//# sourceMappingURL=bootstrap.bundle.js.map

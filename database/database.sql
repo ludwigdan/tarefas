@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS tipo_tarefa (
   CONSTRAINT fk_setor_tp_tarefa
     FOREIGN KEY (id_setor)
     REFERENCES setor (id_setor)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION
 );
 
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS tipo_tarefa_func (
   CONSTRAINT tipo_tarefa_func_tt
     FOREIGN KEY (id_tipo_tarefa)
     REFERENCES tipo_tarefa (id_tipo_tarefa)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION
 );
 
@@ -115,7 +115,7 @@ CREATE TABLE IF NOT EXISTS tipo_tarefa_grupo (
   CONSTRAINT tipo_tarefa_grupo_tt
     FOREIGN KEY (id_tipo_tarefa)
     REFERENCES tipo_tarefa (id_tipo_tarefa)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION
 );
 
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS aprovacao (
   CONSTRAINT fk_aprovacao_tp_tarefa
     FOREIGN KEY (id_tipo_tarefa)
     REFERENCES tipo_tarefa (id_tipo_tarefa)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION
 );
 
@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS aprovacao_grupo (
   CONSTRAINT fk_aprovacao_grupo_a
     FOREIGN KEY (id_aprovacao)
     REFERENCES aprovacao (id_aprovacao)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION
 );
 
@@ -176,7 +176,7 @@ CREATE TABLE IF NOT EXISTS aprovacao_funcionario (
   CONSTRAINT fk_aprovacao_func_a
     FOREIGN KEY (id_aprovacao)
     REFERENCES aprovacao (id_aprovacao)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION
 );
 
