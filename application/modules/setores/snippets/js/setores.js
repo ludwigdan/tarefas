@@ -26,9 +26,12 @@ function addTipoTarefa(idTipoTarefa = false){
         },
         complete: function() {
             selectpicker();
-            $('#tipoTarefaCollapse-'+seq_tipo_tarefa).addClass('show');
-            $('#tipo-tarefa-header-'+seq_tipo_tarefa).removeClass('collapsed');
-            $('#tipo-tarefa-header-'+seq_tipo_tarefa).attr('aria-expanded', 'true');
+            // se for update, trás todos fechados
+            if(idTipoTarefa === false){
+                $('#tipoTarefaCollapse-'+seq_tipo_tarefa).addClass('show');
+                $('#tipo-tarefa-header-'+seq_tipo_tarefa).removeClass('collapsed');
+                $('#tipo-tarefa-header-'+seq_tipo_tarefa).attr('aria-expanded', 'true');
+            }
             $('.ds_tipo_tarefa').trigger('change');
         }
     });  
@@ -52,7 +55,9 @@ function deleteTipoTarefa(seq){
                 $('#tipoTarefaCollapse-'+seq).remove();
             } else if(operacao == 'U'){
                 $('#tipo-tarefa-header-'+seq).removeClass('d-flex');
-                $('#tipo-tarefa-header-'+seq).addClass('hide');           
+                $('#tipo-tarefa-header-'+seq).addClass('hide'); 
+                $('#tipoTarefaCollapse-'+seq).removeClass('show');
+                $('#operacao_tipo_tarefa-'+seq).val('D');          
             }
         }
     });

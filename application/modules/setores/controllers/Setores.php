@@ -27,7 +27,6 @@ class Setores extends MY_Controller {
 
         if(isset($p['id_setor']) && $p['id_setor'] != ""){
             $id_setor = $p['id_setor'];
-
             $this->model->update($setor, $id_setor);
         } else {
             $this->model->insert($setor);
@@ -35,31 +34,46 @@ class Setores extends MY_Controller {
         }
 
         foreach($tipos_tarefas as $i => $tt){
+            $tipo_tarefa = array(
+                'id_setor'       => $id_setor,
+                'ds_tipo_tarefa' => $tt['ds_tipo_tarefa']
+            );
+
             if($tt['operacao_tipo_tarefa'] == 'I'){
-                $tipo_tarefa = array(
-                    'id_setor'       => $id_setor,
-                    'ds_tipo_tarefa' => $tt['ds_tipo_tarefa']
-                );
                 $this->model->insert_tipo_tarefa($tipo_tarefa);
                 $id_tipo_tarefa = $this->db->insert_id();
+            } else if($tt['operacao_tipo_tarefa'] == 'U'){
+                $id_tipo_tarefa = $tt['id_tipo_tarefa'];
+                $this->model->update_tipo_tarefa($tipo_tarefa, $id_tipo_tarefa);
+                $this->model->delete_tipo_tarefa_grupo($id_tipo_tarefa);
+                $this->model->delete_tipo_tarefa_func($id_tipo_tarefa);
+            } else if($tt['operacao_tipo_tarefa'] == 'D'){
+                $id_tipo_tarefa = $tt['id_tipo_tarefa'];
+                $this->model->delete_tipo_tarefa($id_tipo_tarefa);
             }
 
-            // grupos
-            foreach($tt['tipo_tarefa_grupo'] as $i => $g){
-                $tipo_tarefa_grupo = array(
-                    'id_tipo_tarefa' => $id_tipo_tarefa,
-                    'id_grupo'       => $g
-                );
-                $this->model->insert_tipo_tarefa_grupo($tipo_tarefa_grupo);
-            }
+            if($tt['operacao_tipo_tarefa'] != 'D'){
+                // grupos
+                if(isset($tt['tipo_tarefa_grupo'])){
+                    foreach($tt['tipo_tarefa_grupo'] as $i => $g){
+                        $tipo_tarefa_grupo = array(
+                            'id_tipo_tarefa' => $id_tipo_tarefa,
+                            'id_grupo'       => $g
+                        );
+                        $this->model->insert_tipo_tarefa_grupo($tipo_tarefa_grupo);
+                    }
+                }
 
-            // funcionarios
-            foreach($tt['tipo_tarefa_func'] as $i => $f){
-                $tipo_tarefa_func = array(
-                    'id_tipo_tarefa' => $id_tipo_tarefa,
-                    'id_funcionario' => $f
-                );
-                $this->model->insert_tipo_tarefa_func($tipo_tarefa_func);
+                // funcionarios
+                if(isset($tt['tipo_tarefa_func'])){
+                    foreach($tt['tipo_tarefa_func'] as $i => $f){
+                        $tipo_tarefa_func = array(
+                            'id_tipo_tarefa' => $id_tipo_tarefa,
+                            'id_funcionario' => $f
+                        );
+                        $this->model->insert_tipo_tarefa_func($tipo_tarefa_func);
+                    }
+                }
             }
         }
 

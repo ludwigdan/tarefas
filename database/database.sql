@@ -101,12 +101,12 @@ CREATE TABLE IF NOT EXISTS tipo_tarefa_func (
 -- Table tipo_tarefa_grupo
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS tipo_tarefa_grupo (
-  id_tipo_tarefa_func SERIAL,
+  id_tipo_tarefa_grupo SERIAL,
   dt_criacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   dt_atualizacao TIMESTAMP NULL,
   id_tipo_tarefa INT NOT NULL,
   id_grupo INT NOT NULL,
-  PRIMARY KEY (id_tipo_tarefa_func),
+  PRIMARY KEY (id_tipo_tarefa_grupo),
   CONSTRAINT tipo_tarefa_grupo_g
     FOREIGN KEY (id_grupo)
     REFERENCES grupo (id_grupo)

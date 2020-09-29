@@ -68,44 +68,33 @@ class Setores_model extends CI_Model {
 		return $this->db->where('id_setor', $idSetor)->delete('setor');
 	}
 
-	public function tratar_dados($dados){
-		/*
-		unset($dados['id_setor']);
-		unset($dados['grupos']);
-
-		$dados['cpf'] = isset($dados['cpf']) ? preg_replace('/\D/', '', $dados['cpf']) : '';
-
-		if($dados['senha'] != ""){
-			$dados['senha'] = $this->encryption->encrypt($dados['senha']);
-		} else {
-			unset($dados['senha']);
-		}
-		
-
-		if($dados['dt_nascimento'] != ""){
-            $dados['dt_nascimento'] = date_pt_bd($dados['dt_nascimento']);
-        } else {
-        	unset($dados['dt_nascimento']);
-        }
-
-        return $dados;
-        */
-	}
-
 	public function insert_tipo_tarefa($dados){
 		return $this->db->insert('tipo_tarefa',$dados);
+	}
+
+	public function update_tipo_tarefa($dados, $idTipoTarefa){
+		$dados['dt_atualizacao'] = date('Y-m-d H:i:s');
+		return $this->db->where('id_tipo_tarefa', $idTipoTarefa)->update('tipo_tarefa',$dados);
+	}
+
+	public function delete_tipo_tarefa($idTipoTarefa){
+		return $this->db->where('id_tipo_tarefa', $idTipoTarefa)->delete('tipo_tarefa');
 	}
 
 	public function insert_tipo_tarefa_grupo($dados){
 		return $this->db->insert('tipo_tarefa_grupo',$dados);
 	}
 
+	public function delete_tipo_tarefa_grupo($idTipoTarefa){
+		return $this->db->where('id_tipo_tarefa', $idTipoTarefa)->delete('tipo_tarefa_grupo');
+	}
+
 	public function insert_tipo_tarefa_func($dados){
 		return $this->db->insert('tipo_tarefa_func',$dados);
 	}
 
-	public function delete_funcionario_grupo($idFuncionario){
-		return $this->db->where('id_funcionario', $idFuncionario)->delete('funcionario_grupo');
+	public function delete_tipo_tarefa_func($idTipoTarefa){
+		return $this->db->where('id_tipo_tarefa', $idTipoTarefa)->delete('tipo_tarefa_func');
 	}
 
 	public function tratar_dados_tipo_tarefa($dados){
@@ -117,14 +106,16 @@ class Setores_model extends CI_Model {
 				'ds_tipo_tarefa'       => $dados['ds_tipo_tarefa'][$i]
 			);
 
-			//
-			foreach($dados['tipo_tarefa_grupo'][$i] as $i2 => $g){
-				$tipo_tarefa['tipo_tarefa_grupo'][] = $g;
+			if(isset($dados['tipo_tarefa_grupo'][$i])){
+				foreach($dados['tipo_tarefa_grupo'][$i] as $i2 => $g){
+					$tipo_tarefa['tipo_tarefa_grupo'][] = $g;
+				}
 			}
 
-			//
-			foreach($dados['tipo_tarefa_func'][$i] as $i2 => $g){
-				$tipo_tarefa['tipo_tarefa_func'][] = $g;
+			if(isset($dados['tipo_tarefa_func'][$i])){
+				foreach($dados['tipo_tarefa_func'][$i] as $i2 => $g){
+					$tipo_tarefa['tipo_tarefa_func'][] = $g;
+				}
 			}
 			$tipos_tarefas[] = $tipo_tarefa;
 		}

@@ -18,7 +18,7 @@
                                                 <label class="form-control-label">Grupos</label>
                                                 <select id="tipo_tarefa_grupo-<?php echo $seq_tipo_tarefa; ?>" name="tipo_tarefa_grupo[<?php echo $seq_tipo_tarefa; ?>][]" class="form-control selectpicker" multiple="multiple">
                                                     <?php foreach($grupos as $g){ ?>
-                                                        <option <?php echo in_array($g['id_grupo'], $tipo_tarefa[0]['tipo_tarefa_grupo']) ? 'selected' : ''; ?> value="<?php echo $g['id_grupo'] ?>"><?php echo $g['ds_grupo'] ?></option>
+                                                        <option <?php echo isset($tipo_tarefa[0]['tipo_tarefa_grupo']) && in_array($g['id_grupo'], $tipo_tarefa[0]['tipo_tarefa_grupo']) ? 'selected' : ''; ?> value="<?php echo $g['id_grupo'] ?>"><?php echo $g['ds_grupo'] ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -26,7 +26,7 @@
                                                 <label class="form-control-label">Funcionários</label>
                                                 <select id="tipo_tarefa_func-<?php echo $seq_tipo_tarefa; ?>" name="tipo_tarefa_func[<?php echo $seq_tipo_tarefa; ?>][]" class="form-control selectpicker" multiple="multiple">
                                                     <?php foreach($funcionarios as $f){ ?>
-                                                        <option <?php echo in_array($f['id_funcionario'], $tipo_tarefa[0]['tipo_tarefa_func']) ? 'selected' : ''; ?> value="<?php echo $f['id_funcionario'] ?>"><?php echo $f['nm_funcionario'] ?></option>
+                                                        <option <?php echo isset($tipo_tarefa[0]['tipo_tarefa_func']) && in_array($f['id_funcionario'], $tipo_tarefa[0]['tipo_tarefa_func']) ? 'selected' : ''; ?> value="<?php echo $f['id_funcionario'] ?>"><?php echo $f['nm_funcionario'] ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
